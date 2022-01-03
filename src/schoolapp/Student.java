@@ -7,10 +7,10 @@ public class Student {
   private String lastName;
   private String classYear;
   private int classYearCode;
-  private String studentID; // TODO: Algorithm to ensure correct id is always given
-  private int balance;
+  private String studentID;
+  private int balance = 0;
   private String[] enrolledCourses;
-  private static int id = 0;
+  private static int id = 1000;
   private static int costOfCourse = 600;
   private static String[] courses = {"Mathematics", "English", "Biology", "Chemistry", "Physics", "Computer Science"};
 
@@ -46,10 +46,15 @@ public class Student {
   // Generate student ID
   private void setStudentID() {
     id++;
-    studentID = classYearCode * 10000 + id + ""; // TODO: Tweak algorithm
+    studentID = classYearCode + "" + id;
   }
 
   // Enroll in courses
+  // do... while (courseCode != 0)
+  // for loop courses i+1 to get courseCode
+  // courseCounter for new Array[courseCounter]?
+  // then iterate through courses to add to enrolled Courses
+  // or use an arrayList probably better as it doesn't have a set length?
 
   // View balance
 
