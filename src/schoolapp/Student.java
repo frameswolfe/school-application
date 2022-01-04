@@ -1,5 +1,6 @@
 package schoolapp;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Student {
@@ -9,14 +10,15 @@ public class Student {
   private int classYearCode;
   private String studentID;
   private int balance = 0;
-  private String[] enrolledCourses;
+  private ArrayList<String> enrolledCourses = new ArrayList<String>();
   private static int id = 1000;
   private static int costOfCourse = 600;
   private static String[] courses = {"Mathematics", "English", "Biology", "Chemistry", "Physics", "Computer Science"};
 
   // Constructor: prompt user to enter student's name and year
   public Student() {
-    try (Scanner in = new Scanner(System.in)) {
+    // try (Scanner in = new Scanner(System.in)) {
+      Scanner in = new Scanner(System.in);
 
       System.out.print("First name: ");
       this.firstName = in.nextLine();
@@ -38,7 +40,7 @@ public class Student {
       } else {
         classYear = year4;
       }
-    }
+    // }
     setStudentID();
     System.out.println(firstName + " " + lastName + "\n" + classYear + "\n" + studentID);
   }
@@ -50,11 +52,44 @@ public class Student {
   }
 
   // Enroll in courses
-  // do... while (courseCode != 0)
-  // for loop courses i+1 to get courseCode
-  // courseCounter for new Array[courseCounter]?
-  // then iterate through courses to add to enrolled Courses
-  // or use an arrayList probably better as it doesn't have a set length?
+  public void enroll() {
+    int courseCode = 0;
+    Scanner in = new Scanner(System.in);
+
+    do {
+      System.out.println("Select courses to enroll in:");
+      for (int i = 0; i < courses.length; i++) {
+        System.out.println(i + 1 + " - " + courses[i]);
+      }
+      System.out.println("0 - Exit");
+      System.out.print("Course code (1-" + courses.length + "): ");
+      courseCode = in.nextInt();
+
+      if (courseCode != 0) {
+        if (courseCode <= courses.length) {
+          // Check if already enrolled in selected course
+          boolean alreadyEnrolled = false;
+          if (enrolledCourses.size() > 0) {
+            for (int i = 0; i < enrolledCourses.size(); i++) {
+              if (enrolledCourses.get(i).equals(courses[courseCode - 1])) {
+                alreadyEnrolled = true;
+              }
+            }
+          }
+          if (alreadyEnrolled) {
+            System.out.println("You have already enrolled in " + courses[courseCode - 1]);
+          } else {
+            enrolledCourses.add(courses[courseCode - 1]);
+            balance += costOfCourse;
+            System.out.println("You have enrolled in " + courses[courseCode - 1] + " for an added cost of £" + costOfCourse);
+            System.out.println("Enrolled courses: " + enrolledCourses.toString());
+            System.out.println("Outstanding balance: £" + balance);
+          }
+        } else { System.out.println("Invalid course code - please try again"); }
+      }
+    }
+    while (courseCode != 0);
+  }
 
   // View balance
 
