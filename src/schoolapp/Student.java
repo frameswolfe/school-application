@@ -17,7 +17,6 @@ public class Student {
 
   // Constructor: prompt user to enter student's name and year
   public Student() {
-    // try (Scanner in = new Scanner(System.in)) {
       Scanner in = new Scanner(System.in);
 
       System.out.print("First name: ");
@@ -40,9 +39,7 @@ public class Student {
       } else {
         classYear = year4;
       }
-    // }
     setStudentID();
-    System.out.println(firstName + " " + lastName + "\n" + classYear + "\n" + studentID);
   }
 
   // Generate student ID
@@ -82,8 +79,8 @@ public class Student {
             enrolledCourses.add(courses[courseCode - 1]);
             balance += costOfCourse;
             System.out.println("You have enrolled in " + courses[courseCode - 1] + " for an added cost of £" + costOfCourse);
-            System.out.println("Enrolled courses: " + enrolledCourses.toString());
-            System.out.println("Outstanding balance: £" + balance);
+            System.out.println("Enrolled courses: " + enrolledCourses);
+            showBalance();
           }
         } else { System.out.println("Invalid course code - please try again"); }
       }
@@ -92,8 +89,31 @@ public class Student {
   }
 
   // View balance
+  public void showBalance() {
+    System.out.println("Outstanding balance: £" + balance);
+  }
 
   // Pay tuition
+  public void payFees() {
+    Scanner in = new Scanner(System.in);
+    showBalance();
+    System.out.println("How much would you like to pay?");
+    System.out.print("Enter amount: £");
+    int payment = in.nextInt();
+    balance -= payment;
+    System.out.println("Thank you for your payment of £" + payment);
+    showBalance();
+  }
 
   // Show status: name, ID, courses, balance
+  public String toString() {
+    // System.out.println(
+      return
+      "DISPLAY NAME: " + firstName + ' ' + lastName +
+      "\nCLASS YEAR: " + classYear +
+      "\nSTUDENT ID: " + studentID +
+      "\nENROLLED COURSES: " + enrolledCourses +
+      "\nBALANCE: £" + balance
+    ;
+  }
 }
