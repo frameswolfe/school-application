@@ -27,7 +27,7 @@ public class Student {
       String year2 = "Sophomore";
       String year3 = "Junior";
       String year4 = "Senior";
-      System.out.print("Select class year:\n1 - " + year1 + "\n2 - " + year2 + "\n3 - " + year3 + "\n4 - " + year4 + "\n");
+      System.out.print("\nSelect class year:\n1 - " + year1 + "\n2 - " + year2 + "\n3 - " + year3 + "\n4 - " + year4 + "\n");
       System.out.print("Class year: ");
       classYearCode = in.nextInt();
       if (classYearCode == 1) {
@@ -40,6 +40,7 @@ public class Student {
         classYear = year4;
       }
     setStudentID();
+    System.out.println();
   }
 
   // Generate student ID
@@ -61,6 +62,7 @@ public class Student {
       System.out.println("0 - Exit");
       System.out.print("Course code (1-" + courses.length + "): ");
       courseCode = in.nextInt();
+      System.out.println();
 
       if (courseCode != 0) {
         if (courseCode <= courses.length) {
@@ -74,15 +76,16 @@ public class Student {
             }
           }
           if (alreadyEnrolled) {
-            System.out.println("You have already enrolled in " + courses[courseCode - 1]);
+            System.out.println("You have already enrolled in " + courses[courseCode - 1] + "\n");
           } else {
             enrolledCourses.add(courses[courseCode - 1]);
             balance += costOfCourse;
             System.out.println("You have enrolled in " + courses[courseCode - 1] + " for an added cost of £" + costOfCourse);
-            System.out.println("Enrolled courses: " + enrolledCourses);
+            System.out.println("\nEnrolled courses: " + enrolledCourses);
             showBalance();
+            System.out.println();
           }
-        } else { System.out.println("Invalid course code - please try again"); }
+        } else { System.out.println("Invalid course code - please try again\n"); }
       }
     }
     while (courseCode != 0);
@@ -105,15 +108,12 @@ public class Student {
     showBalance();
   }
 
-  // Show status: name, ID, courses, balance
+  // Show status: name, ID, class year, courses, balance
   public String toString() {
-    // System.out.println(
-      return
-      "DISPLAY NAME: " + firstName + ' ' + lastName +
-      "\nCLASS YEAR: " + classYear +
-      "\nSTUDENT ID: " + studentID +
-      "\nENROLLED COURSES: " + enrolledCourses +
-      "\nBALANCE: £" + balance
-    ;
+    return  "FULL NAME: " + firstName + ' ' + lastName +
+            "\nCLASS YEAR: " + classYear +
+            "\nSTUDENT ID: " + studentID +
+            "\nENROLLED COURSES: " + enrolledCourses +
+            "\nBALANCE: £" + balance;
   }
 }
