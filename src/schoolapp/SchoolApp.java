@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SchoolApp {
   public static void main(String[] args) {
-    // Ask how many new users we want to add
+    // Ask how many new students we want to add
     System.out.print("Enter number of new students: ");
     Scanner in = new Scanner(System.in);
     int numOfStudents = in.nextInt();
