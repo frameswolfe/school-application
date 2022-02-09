@@ -1,4 +1,4 @@
-package schoolapp;
+package main.schoolapp;
 
 import java.util.Scanner;
 
@@ -26,5 +26,6 @@ public class SchoolApp {
       System.out.println("Student " + (i + 1) + "\n");
       System.out.println(newStudents[i] + "\n");
     }
+    in.close();
   }
 }
