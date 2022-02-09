@@ -17,29 +17,28 @@ public class Student {
 
   // Constructor: prompt user to enter student's name and year
   public Student() {
-    Scanner in = new Scanner(System.in);
+      Scanner in = new Scanner(System.in);
 
-    System.out.print("First name: ");
-    this.firstName = in.nextLine();
-    System.out.print("Last name: ");
-    this.lastName = in.nextLine();
-    String year1 = "Freshman";
-    String year2 = "Sophomore";
-    String year3 = "Junior";
-    String year4 = "Senior";
-    System.out.print("\nSelect class year:\n1 - " + year1 + "\n2 - " + year2 + "\n3 - " + year3 + "\n4 - " + year4 + "\n");
-    System.out.print("Class year: ");
-    classYearCode = in.nextInt();
-    if (classYearCode == 1) {
-      classYear = year1;
-    } else if (classYearCode == 2) {
-      classYear = year2;
-    } else if (classYearCode == 3) {
-      classYear = year3;
-    } else {
-      classYear = year4;
-    }
-    in.close();
+      System.out.print("First name: ");
+      this.firstName = in.nextLine();
+      System.out.print("Last name: ");
+      this.lastName = in.nextLine();
+      String year1 = "Freshman";
+      String year2 = "Sophomore";
+      String year3 = "Junior";
+      String year4 = "Senior";
+      System.out.print("\nSelect class year:\n1 - " + year1 + "\n2 - " + year2 + "\n3 - " + year3 + "\n4 - " + year4 + "\n");
+      System.out.print("Class year: ");
+      classYearCode = in.nextInt();
+      if (classYearCode == 1) {
+        classYear = year1;
+      } else if (classYearCode == 2) {
+        classYear = year2;
+      } else if (classYearCode == 3) {
+        classYear = year3;
+      } else {
+        classYear = year4;
+      }
     setStudentID();
     System.out.println();
   }
@@ -90,7 +89,6 @@ public class Student {
       }
     }
     while (courseCode != 0);
-    in.close();
   }
 
   // View balance
@@ -108,7 +106,6 @@ public class Student {
     balance -= payment;
     System.out.println("Thank you for your payment of £" + payment);
     showBalance();
-    in.close();
   }
 
   // Show status: name, ID, class year, courses, balance
